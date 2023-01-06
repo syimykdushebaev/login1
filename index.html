@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+     const checkUser = () => {
+        
+            let emailValue=document.getElementById("email").value;
+            let passwordValue = document.getElementById("password").value;
+        
+            if(emailValue=== 'Kiber'&& passwordValue === '2077'){
+                alert('Вы вошли в профиль')
+                let user ={
+                    email:emailValue,
+                    password:passwordValue
+                }
+                localStorage.setItem('userValue',JSON.stringify(user))
+                initLogin()
+            }else{
+                alert('У вас не правильный логин или пароль')
+            }
+        }
+        
+        const renderLogin = () => {
+            let inDiv1= document.createElement('div')
+            inDiv1.className='container'
+            document.body.append(inDiv1)
+            let inDiv =document.createElement('div')
+            inDiv.className ='container1'
+            inDiv1.append(inDiv)
+            let textIn =document.createElement('h2')
+            inDiv.append(textIn)
+            textIn.innerHTML='log in profile'
+            let inDiv2 = document.createElement('div')
+            inDiv2.className ='container2'
+            inDiv.append(inDiv2)
+            let inDiv3 = document.createElement('div')
+            inDiv3.className ='container4'
+            inDiv.append(inDiv3)
+            
+        
+            let email = document.createElement('input');
+        email.id = 'email';
+        email.className ='input'
+
+        let password = document.createElement('input');
+        password.id = 'password';
+        password.className ='input'
+
+         let emailLabel =document.createElement('span');
+         emailLabel.className ='name'
+         let passwordLabel = document.createElement('span');
+         passwordLabel.className = 'name'
+
+         let p =document.createElement('p')
+         let userValue =localStorage.getItem('userValue')
+         p.innerHTML=userValue
+         console.log(userValue)
+
+         emailLabel.innerHTML = 'Введите  email';
+         passwordLabel.innerHTML ='Введите password';
+
+         let button =document.createElement('button');
+         button.innerHTML ='Войти';
+         button.type ='submit'
+         button.addEventListener('click', checkUser)
+         
+         let inDiv4 = document.createElement('i')
+            inDiv4.className ='container6'
+           
+            let inDiv5 = document.createElement('i')
+            inDiv5.className ='container6'
+           
+         
+        inDiv2.append(emailLabel);
+        
+         inDiv2.append(email);
+         
+          inDiv2.append(inDiv4)
+        inDiv3.append(passwordLabel);
+        
+         inDiv3.append(password);
+        
+        inDiv3.append(inDiv5)
+      inDiv.append(button);
+        }
+       
+        const ini = () =>{
+            let a = document.createElement("a");
+            a.href ="https://www.youtube.com/watch?v=qIcTM8WXFjk&t=163s"
+            a.innerHTML= "Смотреть Трейлер"
+           let s = document.body.append(a);
+        }
+
+        const initLogin =() => {
+            localStorage.getItem("userValue")
+            ? ini() : renderLogin();
+        }
+        initLogin()
+    </script>
+</body>
+</html>
